@@ -306,6 +306,16 @@ La interpretación usada fue:
     \item \(Y=0\): clase \textit{WORST}.
 \end{itemize}
 
+Para ordenar y dividir los valores de \(Y\) no se utilizo un algoritmo de aprendizaje automatico. Se aplico una regla deterministica de clasificacion por etiqueta binaria. Primero, el dataset se ordeno de forma descendente usando la columna \(Y\), de modo que los registros con \(Y=1\) quedaran antes que los registros con \(Y=0\). Luego, la separacion se hizo mediante filtrado booleano:
+
+\formula{
+\[
+BEST=\{r \in D \mid Y(r)=1\}, \qquad WORST=\{r \in D \mid Y(r)=0\}
+\]
+}
+
+En la implementacion de Python, este procedimiento corresponde a \texttt{sort\_values(by="Y", ascending=False)} para el ordenamiento y a condiciones del tipo \texttt{df[df["Y"] == 1]} y \texttt{df[df["Y"] == 0]} para la division.
+
 \begin{table}[H]
 \centering
 \caption{Distribución final de registros}

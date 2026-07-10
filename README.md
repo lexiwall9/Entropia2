@@ -297,8 +297,10 @@ Acciones:
 - Verifica si `x7` y `x8` coinciden registro por registro.
 - Si hay diferencias, detiene el proceso con un error.
 - Si coinciden, crea `Y = x7 = x8`.
-- Ordena el dataset por `Y`.
+- Ordena el dataset por `Y` de forma descendente, colocando primero los registros con `Y = 1`.
 - Guarda `salidas/datasets/d9_con_Y_ordenado.csv`.
+
+El ordenamiento no usa un algoritmo de aprendizaje automatico. Se aplica una regla deterministica con `sort_values(by="Y", ascending=False)`.
 
 Resultado del proyecto:
 
@@ -318,6 +320,13 @@ Criterio:
 
 - `BEST`: registros con `Y = 1`.
 - `WORST`: registros con `Y = 0`.
+
+La division tambien se hace por regla directa de etiqueta binaria:
+
+```python
+df_best = df_con_y[df_con_y["Y"] == 1]
+df_worst = df_con_y[df_con_y["Y"] == 0]
+```
 
 Archivos generados:
 
